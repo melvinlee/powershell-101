@@ -13,8 +13,5 @@ Get-Eventlog -log System -newest 10 | format-table @{Label="Time";Expression={$_
 #Get top 10 system eventlog and export to csv
 Get-Eventlog -log System -newest 10 | Select-Object @{Label="Time";Expression={$_.TimeWritten}}, Source, Message | Export-CSV C:\Eventlog.csv
 
-#Get top 10 system eventlog and export to csv
-Get-Eventlog -log System -newest 10 | Select-Object @{Label="Time";Expression={$_.TimeWritten}}, Source, Message | Export-CSV C:\Eventlog.csv
-
 #Get top 10 system eventlog and use -NoTypeInformation to suppress the type information in the output file
 Get-Eventlog -log System -newest 10 | Select-Object Source, Message | Export-CSV C:\Eventlog.csv -NoTypeInformation
