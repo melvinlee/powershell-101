@@ -15,3 +15,6 @@ Get-Eventlog -log System -newest 10 | Select-Object @{Label="Time";Expression={$
 
 #Get top 10 system eventlog and use -NoTypeInformation to suppress the type information in the output file
 Get-Eventlog -log System -newest 10 | Select-Object Source, Message | Export-CSV C:\Eventlog.csv -NoTypeInformation
+
+#Get system eventlog filter by source and select first 10
+Get-Eventlog -log System | Where-Object {$_.Source -eq "WAS"} | Select-Object Message -First 10
